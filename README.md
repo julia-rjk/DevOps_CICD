@@ -81,7 +81,7 @@ docker push jrocpe/my-database
 ```bash
 sudo docker volume create db_data
 sudo docker build -t jrocpe/database .
-sudo docker run -v /db_data:/var/lib/postgresql/data --network=my_net --name database jrocpe/database 
+sudo docker run -v /db_data:/var/lib/postgresql/data --network=my_net --name database -p 5432:5432 jrocpe/database 
 ```
 
 ## Adminer
