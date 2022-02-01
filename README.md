@@ -50,6 +50,8 @@ services:
     build: ./database
     networks: # Using a defined network which is the same for the 3 services
       - app-network
+    volumes: 
+      - db_data:/var/lib/postgresql/data # Using volume
 
   httpd:
     build: ./frontend # Image location

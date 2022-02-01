@@ -8,7 +8,14 @@ spring:
     generate-ddl: false
     open-in-view: true
   datasource:
-    url: "jdbc:postgresql://localhost:5432/cpe"
+    url: "jdbc:postgresql://database:5432/cpe"
     username: julia
     password: julia
     driver-class-name: org.postgresql.Driver
+management:
+ server:
+   add-application-context-header: false
+ endpoints:
+   web:
+     exposure:
+       include: health,info,env,metrics,beans,configprops
