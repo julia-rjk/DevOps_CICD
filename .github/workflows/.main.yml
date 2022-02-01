@@ -47,7 +47,7 @@ jobs:
           # Note: tags has to be all lower-case
           tags: ${{secrets.DOCKERHUB_USERNAME}}/tp-devops-cpe:backend
           # build on feature branches, push only on main branch
-          push: ${{ github.ref == 'refs/heads/main }}
+          push: ${{ github.ref == 'refs/heads/main' }}
 
       # DO the same for database
       - name: Build image and push database
@@ -56,8 +56,8 @@ jobs:
           context: ./database
           tags: ${{secrets.DOCKERHUB_USERNAME}}/tp-devops-cpe:database
           # build on feature branches, push only on main branch
-          push: ${{ github.ref == 'refs/heads/main }}
-          
+          push: ${{ github.ref == 'refs/heads/main' }}
+
       - name: Build image and push httpd
       # DO the same for httpd
         uses: docker/build-push-action@v2
@@ -65,4 +65,4 @@ jobs:
           context: ./frontend
           tags: ${{secrets.DOCKERHUB_USERNAME}}/tp-devops-cpe:frontend
           # build on feature branches, push only on main branch
-          push: ${{ github.ref == 'refs/heads/main }}
+          push: ${{ github.ref == 'refs/heads/main' }}
