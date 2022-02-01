@@ -1,11 +1,7 @@
 # TP n°2
 
-## Questions 
-“mvn clean verify”
 ### 2-1 What are testcontainers?
-
-They simply are java libraries that allow you to run a bunch of docker containers while
-testing.
+They simply are java libraries that allow you to run a bunch of docker containers while testing.
 
 ## 2-2 Document your Github Actions configurations
 ```yaml
@@ -38,7 +34,7 @@ jobs:
 
 ## 2-3 Document your quality gate configuration
 
-```
+```yaml
 name: CI devops 2022 CPE
 on:
   #to begin you want to launch this job in main and develop
@@ -112,3 +108,6 @@ jobs:
           push: ${{ github.ref == 'refs/heads/main' }}
 
 ```
+
+## Split pipeline (Optional)
+See .github/workflows/.main.yml && .github/workflows/.production.yml
