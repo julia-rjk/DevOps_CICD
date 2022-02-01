@@ -35,4 +35,4 @@ jobs:
   
   call-workflow-push-docker:
     needs: test-backend
-    uses: ./.github/workflows/production.yml
+    uses: ./.github/workflows/.production.yml
