@@ -1,7 +1,0 @@
-embedded:
-  postgresql:
-    dockerImage: "postgres:13"
-
-logging:
-  level:
-    org.testcontainers.shaded.org.zeroturnaround.exec.ProcessExecutor: OFF

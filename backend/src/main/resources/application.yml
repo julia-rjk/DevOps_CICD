@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    generate-ddl: false
+    open-in-view: true
+  datasource:
+    url: "jdbc:postgresql://database:5432/cpe"
+    username: julia
+    password: julia
+    driver-class-name: org.postgresql.Driver
