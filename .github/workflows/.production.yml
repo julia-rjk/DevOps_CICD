@@ -11,10 +11,6 @@ on:
 jobs:
   # Define job to build and publish docker image
   push-backend:
-
-    # Run only when code is compiling and tests are passing
-    needs: test-backend
-
     runs-on: ubuntu-latest
     
     # Steps to perform in job
