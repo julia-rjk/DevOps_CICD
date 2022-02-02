@@ -13,16 +13,20 @@ services:
       - app-network
     volumes: 
       - db_data:/var/lib/postgresql/data
-
-  httpd:
+  frontend:
     build: ./frontend
+    networks:
+      - app-network   
+      
+  httpd:
+    build: ./proxy
     ports:
       - "80:80"
     networks:
       - app-network
     depends_on:
       - backend
-      
+  
 volumes:
   db_data:
     driver: local

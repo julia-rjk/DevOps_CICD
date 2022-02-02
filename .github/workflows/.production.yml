@@ -55,12 +55,36 @@ jobs:
           tags: ${{secrets.DOCKERHUB_USERNAME}}/tp-devops-cpe-database
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
-
+  
   push-frontend:
     runs-on: ubuntu-latest
     
     env:
       working-directory: ./frontend  # Launch build-and-test-app job when there are changes on frontend directory.
+    
+    # Steps to perform in job
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Login to DockerHub to push images later
+      - name: Login to DockerHub
+        run: docker login -u ${{secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN }}
+
+      # Same for frontend
+      - name: Build image and push frontend
+        uses: docker/build-push-action@v2
+        with:
+          context: ./frontend
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/tp-devops-cpe-frontend
+          # build on feature branches, push only on main branch
+          push: ${{ github.ref == 'refs/heads/main' }}
+  
+  push-proxy:
+    runs-on: ubuntu-latest
+    
+    env:
+      working-directory: ./proxy  # Launch build-and-test-app job when there are changes on proxy directory.
     
     # Steps to perform in job
     steps:
