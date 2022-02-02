@@ -1,11 +1,6 @@
 name: Ansible deployment
 on:
-  # Launch this job in main and develop branches
-  push:
-    branches: 
-      - main
-      - develop
-  pull_request:
+  workflow_call:
 
 jobs:
   build:
