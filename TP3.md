@@ -1,8 +1,61 @@
 # TP n°3
 
-ssh -i /home/julia/.ssh/ansible/id_rsa.bin centos@julia.rojkovska.takima.cloud
+# Questions 
+## 3-1 Document your inventory and base commands
+```yaml
+all:
+  vars:
+    ansible_user: centos # L'utilisateur 
+    ansible_ssh_private_key_file: id_rsa # Fichier où on retrouve la clé ssh
+  children:
+    prod:
+      hosts: julia.rojkovska.takima.cloud # Adresse du serveur
+```
 
-# TD
+## 3-2 Document your playbook
+```yaml
+- hosts: all
+  gather_facts: false
+  become: yes
+  roles: # Utilisation des roles, cela executera leurs tasks
+    - docker
+    - network
+    - database
+    - app
+    - frontend
+    - proxy
+```
+
+## 3-3 Document your docker_container tasks configuration.
+Exemple : 
+
+```yaml
+# tasks file for roles/network
+- name: Create a network
+  docker_network:
+    name: app-network # Nom du réseau qu'on crée
+
+```
+
+```yaml
+# tasks file for roles/app
+- name: Run app - backend
+  docker_container: 
+    name: backend # Nom de l'image
+    image: jrocpe/tp-devops-cpe-backend:latest # Repository où on récupère l'image
+    networks:
+      - name: "app-network" # Nom du réseau qu'on utilise
+```
+
+## Continuous deployment
+
+- Voir .github/workflows/.ansible.yml & Voir ./ansible/Dockerfile
+
+- Pour l'instant le problème est que la clé ssh est bien décrypter mais j'ai quand même le problème "Failed to connect to the host via ssh: Host key verification failed." via lel workflow mais fonctionne en local 
+
+# Commandes
+
+## TD
     ansible all -m ping --private-key=/home/julia/.ssh/ansible/id_rsa.bin -u centos
 
     ansible all -m yum -a "name=httpd state=present"--private-key=/home/julia/.ssh/ansible/id_rsa.bin -u centos
@@ -16,8 +69,8 @@ ssh -i /home/julia/.ssh/ansible/id_rsa.bin centos@julia.rojkovska.takima.cloud
     # Start your Apache service
     ansible all -m service -a "name=httpd state=started" --private-key=/home/julia/.ssh/ansible/id_rsa.bin -u centos --become
 
-# TP 
-
+## TP 
+ssh -i /home/julia/.ssh/ansible/id_rsa.bin centos@julia.rojkovska.takima.cloud
 ansible all -i inventories/setup.yml -m ping
 
 ansible all -i inventories/setup.yml -m setup -a "filter=ansible_distribution*"
