@@ -1,7 +1,9 @@
 name: Ansible deployment
 on:
   workflow_call:
-
+    secrets:
+      VAULTPASS:
+        required: true
 # on:
 #   push:
 #     branches: 

@@ -43,3 +43,5 @@ jobs:
   deploy-with-ansible:
     needs: call-workflow-push-docker
     uses: ./.github/workflows/.ansible.yml
+    secrets:
+      VAULTPASS: ${{ secrets.VAULTPASS }}
