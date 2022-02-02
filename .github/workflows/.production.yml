@@ -96,10 +96,10 @@ jobs:
         run: docker login -u ${{secrets.DOCKERHUB_USERNAME }} -p ${{secrets.DOCKERHUB_TOKEN }}
 
       # Same for frontend
-      - name: Build image and push frontend
+      - name: Build image and push proxy
         uses: docker/build-push-action@v2
         with:
-          context: ./frontend
-          tags: ${{secrets.DOCKERHUB_USERNAME}}/tp-devops-cpe-frontend
+          context: ./proxy
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/tp-devops-cpe-proxy
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
