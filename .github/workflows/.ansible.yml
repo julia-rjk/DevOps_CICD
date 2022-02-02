@@ -22,6 +22,7 @@ jobs:
         env:
           DO_SSH_KEY: ${{ secrets.ANSIBLE_SSH_KEY }}
         run: |
+          mkdir .ssh
           echo "$DO_SSH_KEY" > .ssh/id_rsa.bin
           chmod 600 .ssh/id_rsa.bin
           echo "$DO_SSH_KEY"
