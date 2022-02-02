@@ -26,7 +26,7 @@ WORKDIR $MYAPP_HOME # Going in /opt/myapp folder
 COPY --from=myapp-build $MYAPP_HOME/target/*.jar $MYAPP_HOME/myapp.jar # Copying jar files
 ENTRYPOINT java -jar myapp.jar # Execution
 ```
-
+--
 ## 1-3 **Document docker-compose most important commands**
 ```bash
 sudo docker-compose build
