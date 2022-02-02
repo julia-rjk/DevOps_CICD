@@ -1,6 +1,10 @@
 name: Ansible deployment
 on:
-  workflow_call:
+  push:
+    branches: 
+      - main
+      - develop
+  pull_request:
 
 jobs:
   build:
@@ -21,8 +25,8 @@ jobs:
         run: |
           echo "$ANSIBLE_VAULT_PASSWORD" > .ansible-vault-password
           mkdir .ssh
-          echo "$DO_SSH_KEY" > .ssh/ansible/id_rsa.bin
-          chmod 600 .ssh/ansible/id_rsa.bin
+          echo "$DO_SSH_KEY" > .ssh/id_rsa.bin
+          chmod 600 .ssh/id_rsa.bin
       - name: run exporters playbook
         run: |
           ansible-playbook -i ansible/inventories/setup.yml ansible/playbook.yml

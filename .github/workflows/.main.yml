@@ -24,7 +24,7 @@ jobs:
         with:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '11'
-          
+
       - name: Build and test with Maven
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -40,6 +40,6 @@ jobs:
       DOCKERHUB_USERNAME: ${{secrets.DOCKERHUB_USERNAME }} 
       DOCKERHUB_TOKEN: ${{secrets.DOCKERHUB_TOKEN }}
 
-  deploy-with-ansible:
-    needs: call-workflow-push-docker
-    uses: ./.github/workflows/.ansible.yml
+  # deploy-with-ansible:
+  #   needs: call-workflow-push-docker
+  #   uses: ./.github/workflows/.ansible.yml
