@@ -1,0 +1,8 @@
+---
+# tasks file for roles/frontend
+- name: Run proxy
+  docker_container: 
+    name: frontend
+    image: jrocpe/tp-devops-cpe-frontend:latest
+    networks:
+      - name: "app-network"

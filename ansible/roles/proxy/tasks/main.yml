@@ -2,8 +2,8 @@
 # tasks file for roles/proxy
 - name: Run proxy
   docker_container: 
-    name: frontend
-    image: jrocpe/tp-devops-cpe-frontend:latest
+    name: proxy
+    image: jrocpe/tp-devops-cpe-proxy:latest
     ports:
       - "80:80"
     networks:
