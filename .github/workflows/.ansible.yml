@@ -25,7 +25,8 @@ jobs:
           mkdir .ssh
           echo "$DO_SSH_KEY" > .ssh/id_rsa.bin
           chmod 600 .ssh/id_rsa.bin
-          echo "$DO_SSH_KEY"
       - name: run exporters playbook
         run: |
+          echo "SSH KEY"
+          cat .ssh/id_rsa.bin
           ansible-playbook -i ansible/inventories/setup.yml ansible/playbook.yml
