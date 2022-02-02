@@ -1,4 +1,7 @@
 name: Ansible deployment
+# on:
+#   workflow_call:
+
 on:
   push:
     branches: 

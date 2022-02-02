@@ -16,6 +16,8 @@ services:
   
   frontend:
     build: ./frontend
+    ports:
+      - "80:8081"
     networks:
       - app-network   
       
