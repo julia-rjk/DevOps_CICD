@@ -1,0 +1,8 @@
+---
+# tasks file for roles/app
+- name: Run app - backend
+  docker_container: 
+    name: backend
+    image: jrocpe/tp-devops-cpe-backend:latest
+    networks:
+      - name: "app-network"

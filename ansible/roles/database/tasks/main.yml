@@ -1,0 +1,14 @@
+---
+# tasks file for roles/database
+- name: Create volume db_data
+  docker_volume:
+    name: db_data
+
+- name: Run database
+  docker_container: 
+    name: database
+    image: jrocpe/tp-devops-cpe-database:latest
+    networks:
+      - name: "app-network"
+    volumes: 
+      - db_data:/var/lib/postgresql/data
