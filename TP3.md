@@ -51,8 +51,7 @@ Exemple :
 *https://misfra.me/2019/10/using-ansible-with-github-actions/*
 
 - Voir .github/workflows/.ansible.yml & Voir ./ansible/Dockerfile
-
-- Pour l'instant le problème est que la clé ssh est bien décrypter mais j'ai quand même le problème "Failed to connect to the host via ssh: Host key verification failed." via lel workflow mais fonctionne en local 
+- Ca fonctionne 
 
 # Commandes
 
