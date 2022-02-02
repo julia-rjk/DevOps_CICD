@@ -36,11 +36,12 @@ ansible-galaxy init roles/docker &&
 ansible-galaxy init roles/network && \
 ansible-galaxy init roles/database && \
 ansible-galaxy init roles/app && \
-ansible-galaxy init roles/proxy 
+ansible-galaxy init roles/proxy && \
+ansible-galaxy init roles/frontend
 ```
 
 ## Run
 ```bash
 cd ansible
-
+ansible-playbook -i ansible/inventories/setup.yml ansible/playbook.yml
 ```
