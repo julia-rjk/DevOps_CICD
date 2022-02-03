@@ -33,7 +33,7 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=julia-rjk_DevOps_CICD --file ./backend/pom.xml 
   
   call-workflow-push-docker:
-    needs: test-backend
+    # needs: test-backend
     uses: ./.github/workflows/.production.yml
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
