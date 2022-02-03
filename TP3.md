@@ -51,7 +51,6 @@ Exemple :
 *https://misfra.me/2019/10/using-ansible-with-github-actions/*
 
 - Voir .github/workflows/.ansible.yml & Voir ./ansible/Dockerfile
-- Ca fonctionne 
 
 # Commandes
 
