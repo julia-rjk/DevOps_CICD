@@ -3,8 +3,6 @@
 - name: Run frontend
   docker_container: 
     name: frontend
-    image: jrocpe/tp-devops-cpe-frontend:latest
-    ports:
-      - "8081:80"
+    image: jrocpe/tp-devops-cpe-frontend
     networks:
       - name: "app-network"
